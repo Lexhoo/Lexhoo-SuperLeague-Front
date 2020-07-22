@@ -1,0 +1,47 @@
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by city" [(ngModel)]="city" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()">
+          Search
+        </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Teams</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let team of teams; let i = index" [class.active]="i == currentIndex" (click)="setActiveTeam(team, i)">
+                {{ team.city }} {{ team.name }}
+            </li>
+        </ul>
+
+        <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTeams()">
+      Remove All
+    </button>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentTeam">
+            <h4>Lexoo Super League </h4>
+            <div>
+                <label><strong>City:</strong></label> {{ currentTeam.city }}
+            </div>
+            <div>
+                <label><strong>Name:</strong></label> {{ currentTeam.name }}
+            </div>
+            <div>
+                <label><strong>Status:</strong></label> {{ currentTeam.published ? "Published" : "Pending" }}
+            </div>
+
+            <a class="badge badge-warning" href="/list/{{ currentTeam.id }}">
+        Edit
+      </a>
+        </div>
+
+        <div *ngIf="!currentTeam">
+            <br />
+            <p>Please select a Team...</p>
+        </div>
+    </div>
+</div>
