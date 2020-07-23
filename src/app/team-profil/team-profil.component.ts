@@ -1,20 +1,21 @@
-import { HomeService } from '../services/home.service';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { TeamListComponent } from '../team-list/team-list.component';
+import { HomeService } from '../services/home.service';
 
 @Component({
-  selector: 'app-home-list',
-  templateUrl: './team-list.component.html',
-  styleUrls: ['./team-list.component.scss']
+  selector: 'app-team-profil',
+  templateUrl: './team-profil.component.html',
+  styleUrls: ['./team-profil.component.scss']
 })
-export class TeamListComponent implements OnInit {
+export class TeamProfilComponent implements OnInit {
 
   teams: any;
   currentTeam = null;
   currentIndex = -1;
   city = '';
 
-  constructor(private homeService: HomeService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private homeService: HomeService) { }
+
 
   ngOnInit(): void {
     this.retrieveTeams();
@@ -22,29 +23,16 @@ export class TeamListComponent implements OnInit {
   }
 
   retrieveTeams(): void {
-    this.homeService.getAll().subscribe({
-      next: (teamFromServer) => {
-        this.teams = teamFromServer;
-      },
-      error: (err) => {
-        console.log('error teams' ,err);
-      }
-
-    });
-     this.homeService.getAll().subscribe(teamFromserver => {
-       this.teams = teamFromserver;
-     })
-
-        }
-
-onSelect() {
-  this.router.navigate(['players']);
-
-}
-
-getTeam() {
-
-}
+    this.homeService.getAll()
+      .subscribe(
+        data => {
+          this.teams = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
 
   refreshList(): void {
     this.retrieveTeams();
@@ -79,5 +67,4 @@ getTeam() {
           console.log(error);
         });
   }
-  }
-
+}

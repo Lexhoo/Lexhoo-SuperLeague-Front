@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -14,7 +14,9 @@ const PUBLISHED_URL = 'http://localhost:8080/published';
 @Injectable({
   providedIn: 'root'
 })
+
 export class HomeService {
+  @Input() HomeService: any
 
   constructor(private httpClient: HttpClient) { }
 

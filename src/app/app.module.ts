@@ -16,6 +16,10 @@ import { ProfileComponent } from './profile/profile.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { TeamListComponent } from './team-list/team-list.component';
+import { PlayerListComponent } from './player-list/player-list.component';
+import { TeamProfilComponent } from './team-profil/team-profil.component';
+import { ShoesListComponent } from './shoes-list/shoes-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,12 +32,18 @@ import { TeamListComponent } from './team-list/team-list.component';
     BoardModeratorComponent,
     ProfileComponent,
     TeamListComponent,
+    PlayerListComponent,
+    TeamProfilComponent,
+    ShoesListComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+
+
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

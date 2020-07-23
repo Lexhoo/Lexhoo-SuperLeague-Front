@@ -1,0 +1,23 @@
+<div class="col-md-6">
+    <div *ngIf="currentTeam">
+        <h4>{{currentTeam.city}} {{currentTeam.name}} </h4>
+        <div>
+            <label><strong>City:</strong></label> {{ currentTeam.city }}
+        </div>
+        <div>
+            <label><strong>Name:</strong></label> {{ currentTeam.name }}
+        </div>
+        <div>
+            <label><strong>Status:</strong></label> {{ currentTeam.published ? "Published" : "Pending" }}
+        </div>
+
+        <a class="button-narrow" href="/list/{{ currentTeam.id }}">
+  Edit
+</a>
+    </div>
+
+    <div *ngIf="!currentTeam">
+        <br />
+        <p>Team Profil{{currentTeam.city}} {{currentTeam.name}}</p>
+    </div>
+</div>

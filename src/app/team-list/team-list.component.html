@@ -1,6 +1,8 @@
+<div class="title">Super League</div>
+
 <div class="list row">
-    <div class="col-md-8">
-        <div class="input-group mb-3">
+    <div class="col-md-4">
+        <div class="input-group mb-8">
             <input type="text" class="form-control" placeholder="Search by city" [(ngModel)]="city" />
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()">
@@ -9,8 +11,8 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <h4>Teams</h4>
+    <div class="col-md-12">
+        <h3>Teams</h3>
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let team of teams; let i = index" [class.active]="i == currentIndex" (click)="setActiveTeam(team, i)">
                 {{ team.city }} {{ team.name }}
@@ -23,19 +25,27 @@
     </div>
     <div class="col-md-6">
         <div *ngIf="currentTeam">
-            <h4>Lexoo Super League </h4>
+            <h4>{{currentTeam.city}} {{currentTeam.name}} </h4>
             <div>
                 <label><strong>City:</strong></label> {{ currentTeam.city }}
             </div>
+            <label><strong>Name:</strong></label> {{ currentTeam.name }}
+
             <div>
-                <label><strong>Name:</strong></label> {{ currentTeam.name }}
+                <label><strong>Stadium:</strong></label> {{ currentTeam.stadium }}
             </div>
+            <label><strong>Number Of Title:</strong></label> {{ currentTeam.numberoftitle }}
             <div>
-                <label><strong>Status:</strong></label> {{ currentTeam.published ? "Published" : "Pending" }}
+                <label><strong>Coach:</strong></label> {{ currentTeam.coach }}
+            </div>
+            <label><strong>Adress:</strong></label> {{ currentTeam.adress }}
+            <div>
+                <a class="button-narrow" href="{{currentTeam.website}}">Website</a>
             </div>
 
-            <a class="badge badge-warning" href="/list/{{ currentTeam.id }}">
-        Edit
+
+            <a class="button-big" (click)="onSelect()">
+        Players List
       </a>
         </div>
 

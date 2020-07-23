@@ -1,0 +1,58 @@
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by name" />
+            <div class="input-group-append">
+                Search
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <h1>Players</h1>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let player of players; let i = index" [class.active]="i == currentIndex" (click)="setActiveTeam(player, i)">
+                {{ player.firstname }} {{ player.lastname }}
+            </li>
+        </ul>
+        <button class="m-3 btn btn-sm btn-danger" (click)="addPlayer()">
+        Add Player  </button>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentPlayer">
+            <h1>{{currentPlayer.firstname}} {{currentPlayer.lastname}} </h1>
+            <div>
+                <label><strong>Age:</strong></label> {{ currentPlayer.age }} years old
+            </div>
+            <div>
+                <label><strong>Team:</strong></label> {{ currentPlayer.team_team_id }}
+            </div>
+            <div>
+                <label><strong>Nationality:</strong></label> {{ currentPlayer.nationality }}
+            </div>
+            <label><strong>Height:</strong></label> {{ currentPlayer.height }} Cm
+            <div>
+                <label><strong>Weight:</strong></label> {{ currentPlayer.weight }} Kg
+                <div>
+                    <label><strong>Post:</strong></label> {{ currentPlayer.post }}
+                    <div>
+                        <label><strong>Salary:</strong></label> {{ currentPlayer.salary }} $
+                        <div>
+
+                            <label><strong>Rating:</strong></label> {{ currentPlayer.published ? "Published" : "Pending" }}
+                        </div>
+                        <a class="button-narrow" href="{{currentPlayer.videolink}}">video</a>
+                        <a class="button-narrow" href="/list/{{ currentPlayer.id }}">
+      Edit
+    </a>
+                    </div>
+
+                    <div *ngIf="!currentPlayer">
+                        <br />
+                        <p>Please select a player...</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>

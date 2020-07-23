@@ -9,11 +9,19 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { TeamListComponent } from './team-list/team-list.component';
 import { CreateTeamComponent } from './create-team/create-team.component';
+import { PlayerListComponent } from './player-list/player-list.component';
+import { TeamProfilComponent } from './team-profil/team-profil.component';
+import { ShoesListComponent } from './shoes-list/shoes-list.component';
+import { SuperleagueComponent } from './superleague/superleague.component';
 
 const routes: Routes = [
-  { path: 'createteam', component: CreateTeamComponent },
-  { path: 'list', component: TeamListComponent },
   { path: '', component: LoginComponent },
+  { path: 'teams', component: TeamListComponent },
+  { path: 'newplayer', component: SuperleagueComponent },
+  { path: 'players', component: PlayerListComponent },
+  { path: 'teamprofil', component: TeamProfilComponent },
+  { path: 'createteam', component: CreateTeamComponent },
+  { path: 'shoes', component: ShoesListComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
@@ -27,3 +35,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [TeamListComponent,
+                                  PlayerListComponent,
+                                ShoesListComponent]
